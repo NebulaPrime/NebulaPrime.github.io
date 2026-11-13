@@ -112,6 +112,24 @@
   }
   @keyframes blink{50%{opacity:0}}
 
+  .heart{
+    display:inline-block;
+    width:16px;height:16px;
+    margin-left:10px;
+    vertical-align:-2px;
+    color:#ff7aa2;
+    fill:currentColor;
+    filter:drop-shadow(0 0 8px rgba(255,122,162,.55));
+    animation:beat 1.8s ease-in-out infinite;
+  }
+  @keyframes beat{
+    0%,100%{transform:scale(1)}
+    12%{transform:scale(1.16)}
+    24%{transform:scale(1)}
+    36%{transform:scale(1.10)}
+    48%{transform:scale(1)}
+  }
+
   footer{
     position:fixed;
     left:0;right:0;bottom:26px;
@@ -139,7 +157,7 @@
   <h1>NEBULA PRIME</h1>
   <div class="sub">高卓然 · Zhuoran Gao</div>
   <div class="line"></div>
-  <p class="note">晚安，我是爱珠的小壮<span class="cursor"></span></p>
+  <p class="note">晚安，我是爱珠的小壮<svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></p>
 </main>
 <footer>
   <a href="https://github.com/NebulaPrime" target="_blank" rel="noopener">GitHub</a>
