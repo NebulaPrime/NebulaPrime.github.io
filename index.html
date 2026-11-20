@@ -3,163 +3,196 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>小壮想珠中</title>
-<meta name="description" content="高卓然的小角落">
-<meta name="theme-color" content="#fdf6ee">
+<title>小珠锻炼中</title>
+<meta name="description" content="小珠锻炼中">
+<meta name="theme-color" content="#bfe4ff">
 <style>
-  :root{
-    --fg:#4a3426;
-    --dim:#a8856b;
-    --accent:#e8805e;
-    --line:rgba(232,128,94,.22);
-  }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{min-height:100%}
+  html,body{height:100%}
   body{
-    background:radial-gradient(circle at 50% 20%, #fffdf9 0%, #fdf1e4 46%, #f8e0cd 100%);
-    color:var(--fg);
+    background:#bfe4ff;
     font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
-    display:grid;
-    place-items:center;
-    min-height:100svh;
-    padding:32px 24px;
     overflow:hidden;
-    position:relative;
-    -webkit-font-smoothing:antialiased;
   }
-  /* 暖光晕 */
-  body::before{
-    content:"";
-    position:fixed;
-    width:min(80vmax,980px);height:min(80vmax,980px);
-    left:50%;top:46%;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle, rgba(255,214,186,.55), transparent 62%);
-    pointer-events:none;
-  }
-  /* 暖色小点点 */
-  body::after{
-    content:"";
-    position:fixed;inset:0;
-    background-image:radial-gradient(rgba(214,163,128,.28) 1px, transparent 1px);
-    background-size:26px 26px;
-    -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);
-            mask-image:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);
-    opacity:.55;
-    pointer-events:none;
-  }
-  main{
-    position:relative;
-    text-align:center;
-    max-width:680px;
-    animation:rise .9s cubic-bezier(.2,.7,.2,1) both;
-  }
-  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-  .status{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:12.5px;letter-spacing:.22em;
-    color:#b08a6e;
-    border:1px solid rgba(214,163,128,.45);
-    background:rgba(255,251,246,.7);
-    border-radius:999px;
-    padding:7px 16px;
-    margin-bottom:36px;
-  }
-  .badge-icon{width:12px;height:12px;color:#e8a87c}
+  .stage{position:relative;width:100%;height:100svh;overflow:hidden}
+  .bg{position:absolute;inset:0;width:100%;height:100%;display:block}
 
   h1{
-    font-size:clamp(34px,9vw,62px);
-    font-weight:600;
+    position:absolute;
+    top:7%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:clamp(26px,6vw,52px);
+    font-weight:800;
     letter-spacing:.10em;
-    line-height:1.1;
-    background:linear-gradient(180deg,#6b4a33 0%,#a3714d 100%);
-    -webkit-background-clip:text;background-clip:text;
-    color:transparent;
-  }
-  .sub{
-    margin-top:14px;
-    font-size:13px;
-    letter-spacing:.30em;
-    color:#b5967d;
-  }
-  .line{
-    margin:34px auto 0;
-    width:72px;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(232,128,94,.55),transparent);
-  }
-  .note{
-    margin-top:34px;
-    font-size:17px;
-    line-height:1.9;
-    color:#6b4f3a;
-    letter-spacing:.02em;
+    color:#fff;
+    text-shadow:
+      0 2px 0 rgba(120,160,200,.35),
+      0 10px 26px rgba(90,150,200,.35);
+    white-space:nowrap;
+    z-index:2;
   }
 
-  /* 小猪：轻微浮动 + 眨眼 */
-  .pig{
-    display:inline-block;
-    width:44px;height:44px;
-    margin-left:10px;
-    vertical-align:-11px;
-    animation:float 3s ease-in-out infinite;
-    filter:drop-shadow(0 3px 6px rgba(232,128,94,.22));
-  }
-  @keyframes float{
+  /* 小猪做动作：整体轻微起伏 */
+  .pig{animation:lift 1.6s ease-in-out infinite}
+  @keyframes lift{
     0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-5px)}
+    50%{transform:translateY(-6px)}
   }
-  .pig .eye{transform-origin:center;animation:blink 5.2s infinite}
-  @keyframes blink{
-    0%,94%,100%{transform:scaleY(1)}
-    96%{transform:scaleY(.12)}
+  /* 汗珠 */
+  .sweat{animation:sweat 2.4s ease-in-out infinite}
+  @keyframes sweat{
+    0%,60%{opacity:0;transform:translateY(-4px)}
+    75%{opacity:1}
+    100%{opacity:0;transform:translateY(16px)}
   }
-
-  footer{
-    position:fixed;
-    left:0;right:0;bottom:26px;
-    display:flex;justify-content:center;gap:26px;
-    font-size:12px;
-    letter-spacing:.05em;
-    color:#bda998;
+  .cloud{animation:drift 26s linear infinite}
+  @keyframes drift{
+    from{transform:translateX(0)}
+    to{transform:translateX(46px)}
   }
-  footer a{
-    color:#bda998;
-    text-decoration:none;
-    transition:color .2s ease;
-  }
-  footer a:hover{color:var(--accent)}
-
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important}
   }
 </style>
 </head>
 <body>
-<main>
-  <div class="status">
-    <svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.2 2.4 11.4h2.9V21h5.2v-5.6h3v5.6h5.2v-9.6h2.9z"/></svg>
-    小壮的窝
-  </div>
-  <h1>小壮想珠中</h1>
-  <div class="sub">高卓然 · ZHUORAN GAO</div>
-  <div class="line"></div>
-  <p class="note">周六见<svg class="pig" viewBox="0 0 72 72" aria-label="小猪" role="img">
-    <path d="M19 21q-3-13 8-11 6 2 6 10z" fill="#ffc2cf"/>
-    <path d="M53 21q3-13-8-11-6 2-6 10z" fill="#ffc2cf"/>
-    <ellipse cx="36" cy="41" rx="23" ry="20" fill="#ffd4dd"/>
-    <ellipse cx="19" cy="47" rx="5.2" ry="3.6" fill="#ffa8bb" opacity=".65"/>
-    <ellipse cx="53" cy="47" rx="5.2" ry="3.6" fill="#ffa8bb" opacity=".65"/>
-    <circle class="eye" cx="27" cy="35" r="2.7" fill="#5a3b45"/>
-    <circle class="eye" cx="45" cy="35" r="2.7" fill="#5a3b45"/>
-    <ellipse cx="36" cy="46" rx="10" ry="7.6" fill="#ffb0c0"/>
-    <ellipse cx="32.4" cy="46" rx="1.8" ry="2.4" fill="#d9657f"/>
-    <ellipse cx="39.6" cy="46" rx="1.8" ry="2.4" fill="#d9657f"/>
-  </svg></p>
-</main>
-<footer>
-  <a href="https://github.com/NebulaPrime" target="_blank" rel="noopener">GitHub</a>
-  <span>gaozhuoran.com</span>
-</footer>
+<div class="stage">
+<svg class="bg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8ecbff"/>
+      <stop offset="55%" stop-color="#c3e7ff"/>
+      <stop offset="100%" stop-color="#e9f7ff"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a7e089"/>
+      <stop offset="100%" stop-color="#6cc353"/>
+    </linearGradient>
+    <linearGradient id="track" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f29269"/>
+      <stop offset="100%" stop-color="#df7150"/>
+    </linearGradient>
+    <radialGradient id="sunGlow">
+      <stop offset="0%" stop-color="#ffe680" stop-opacity=".9"/>
+      <stop offset="100%" stop-color="#ffe680" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 天空 -->
+  <rect width="1000" height="700" fill="url(#sky)"/>
+
+  <!-- 太阳 -->
+  <circle cx="822" cy="118" r="130" fill="url(#sunGlow)"/>
+  <circle cx="822" cy="118" r="46" fill="#ffd93d"/>
+
+  <!-- 云 -->
+  <g class="cloud" fill="#ffffff" opacity=".95">
+    <ellipse cx="196" cy="132" rx="54" ry="26"/>
+    <ellipse cx="236" cy="120" rx="39" ry="31"/>
+    <ellipse cx="160" cy="124" rx="35" ry="22"/>
+  </g>
+  <g class="cloud" fill="#ffffff" opacity=".8" style="animation-delay:-9s">
+    <ellipse cx="742" cy="228" rx="46" ry="20"/>
+    <ellipse cx="774" cy="218" rx="30" ry="22"/>
+    <ellipse cx="712" cy="220" rx="26" ry="16"/>
+  </g>
+
+  <!-- 远处树 -->
+  <g>
+    <rect x="120" y="352" width="13" height="66" fill="#a8764f"/>
+    <circle cx="126" cy="338" r="52" fill="#77c25f"/>
+    <circle cx="92" cy="352" r="34" fill="#89cf6e"/>
+    <circle cx="162" cy="354" r="32" fill="#6fb857"/>
+    <rect x="888" y="360" width="12" height="58" fill="#a8764f"/>
+    <circle cx="894" cy="342" r="44" fill="#7ec766"/>
+  </g>
+
+  <!-- 草地 -->
+  <rect y="392" width="1000" height="308" fill="url(#grass)"/>
+
+  <!-- 跑道 -->
+  <path d="M0 468 Q 500 428 1000 468 L1000 566 Q 500 526 0 566 Z" fill="url(#track)"/>
+  <path d="M0 517 Q 500 477 1000 517" stroke="#ffffff" stroke-width="3"
+        stroke-dasharray="26 20" fill="none" opacity=".75"/>
+  <path d="M0 566 Q 500 526 1000 566" stroke="#ffffff" stroke-width="4" fill="none" opacity=".55"/>
+
+  <!-- 近景小草 -->
+  <g fill="#5cb443" opacity=".85">
+    <path d="M60 640 q6 -26 12 0 q6 -26 12 0z"/>
+    <path d="M190 668 q6 -24 11 0 q6 -24 11 0z"/>
+    <path d="M840 650 q6 -26 12 0 q6 -26 12 0z"/>
+    <path d="M930 682 q6 -22 11 0 q6 -22 11 0z"/>
+  </g>
+
+  <!-- 小猪：拟人，双手举哑铃 -->
+  <g transform="translate(500 600) scale(0.92)">
+  <g class="pig">
+    <ellipse cx="0" cy="8" rx="78" ry="13" fill="#4a7a3a" opacity=".18"/>
+
+    <!-- 腿 -->
+    <rect x="-40" y="-62" width="32" height="62" rx="16" fill="#ffd4dd"/>
+    <rect x="8" y="-62" width="32" height="62" rx="16" fill="#ffd4dd"/>
+    <!-- 鞋 -->
+    <ellipse cx="-24" cy="-2" rx="26" ry="12" fill="#ff8fa8"/>
+    <ellipse cx="24" cy="-2" rx="26" ry="12" fill="#ff8fa8"/>
+
+    <!-- 身体 -->
+    <ellipse cx="0" cy="-108" rx="60" ry="54" fill="#ffd4dd"/>
+    <!-- 背心 -->
+    <path d="M-46 -126 q46 -20 92 0 l7 36 q-53 17 -106 0 z" fill="#ff9eb5"/>
+
+    <!-- 手臂（向上举起） -->
+    <rect x="-92" y="-198" width="27" height="92" rx="13.5" fill="#ffd4dd"
+          transform="rotate(-14 -78.5 -152)"/>
+    <rect x="65" y="-198" width="27" height="92" rx="13.5" fill="#ffd4dd"
+          transform="rotate(14 78.5 -152)"/>
+
+    <!-- 哑铃 -->
+    <g fill="#7a8fa3">
+      <rect x="-96" y="-238" width="11" height="40" rx="5.5"/>
+      <circle cx="-90.5" cy="-244" r="16"/>
+      <circle cx="-90.5" cy="-192" r="16"/>
+      <rect x="85" y="-238" width="11" height="40" rx="5.5"/>
+      <circle cx="90.5" cy="-244" r="16"/>
+      <circle cx="90.5" cy="-192" r="16"/>
+    </g>
+    <g fill="#9fb3c6">
+      <circle cx="-90.5" cy="-244" r="6"/>
+      <circle cx="90.5" cy="-244" r="6"/>
+    </g>
+
+    <!-- 头 -->
+    <g transform="translate(0 -222)">
+      <!-- 耳朵 -->
+      <path d="M-42 -32 q-8 -30 16 -25 q15 4 15 25 z" fill="#ffb8c9"/>
+      <path d="M42 -32 q8 -30 -16 -25 q-15 4 -15 25 z" fill="#ffb8c9"/>
+      <!-- 脸 -->
+      <circle cx="0" cy="0" r="52" fill="#ffd4dd"/>
+      <!-- 腮红 -->
+      <ellipse cx="-31" cy="15" rx="11" ry="7" fill="#ff9eb5" opacity=".6"/>
+      <ellipse cx="31" cy="15" rx="11" ry="7" fill="#ff9eb5" opacity=".6"/>
+      <!-- 眼睛（专注） -->
+      <ellipse cx="-18" cy="-2" rx="6" ry="7" fill="#4a3426"/>
+      <ellipse cx="18" cy="-2" rx="6" ry="7" fill="#4a3426"/>
+      <circle cx="-16" cy="-5" r="2.1" fill="#fff"/>
+      <circle cx="20" cy="-5" r="2.1" fill="#fff"/>
+      <!-- 鼻子 -->
+      <ellipse cx="0" cy="21" rx="19" ry="14" fill="#ffb0c0"/>
+      <ellipse cx="-6.5" cy="21" rx="3" ry="4" fill="#d9657f"/>
+      <ellipse cx="6.5" cy="21" rx="3" ry="4" fill="#d9657f"/>
+      <!-- 用力的小嘴 -->
+      <path d="M-9 38 q9 9 18 0" stroke="#d9657f" stroke-width="3.4"
+            fill="none" stroke-linecap="round"/>
+      <!-- 汗珠 -->
+      <path d="M58 -12 q-8 12 0 17 q8 -5 0 -17z" fill="#7fc4f5"/>
+      <path d="M-60 -4 q-7 10 0 15 q7 -4 0 -15z" fill="#7fc4f5" opacity=".85"/>
+    </g>
+  </g>
+  </g>
+</svg>
+
+  <h1>小珠锻炼中</h1>
+</div>
 </body>
 </html>
