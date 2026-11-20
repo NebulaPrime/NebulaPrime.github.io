@@ -33,18 +33,10 @@
     z-index:2;
   }
 
-  /* 小猪做动作：整体轻微起伏 */
-  .pig{animation:lift 1.6s ease-in-out infinite}
+  .pig{animation:lift 1.7s ease-in-out infinite}
   @keyframes lift{
     0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-6px)}
-  }
-  /* 汗珠 */
-  .sweat{animation:sweat 2.4s ease-in-out infinite}
-  @keyframes sweat{
-    0%,60%{opacity:0;transform:translateY(-4px)}
-    75%{opacity:1}
-    100%{opacity:0;transform:translateY(16px)}
+    50%{transform:translateY(-7px)}
   }
   .cloud{animation:drift 26s linear infinite}
   @keyframes drift{
@@ -125,68 +117,95 @@
     <path d="M930 682 q6 -22 11 0 q6 -22 11 0z"/>
   </g>
 
-  <!-- 小猪：拟人，双手举哑铃 -->
+  <!-- 小猪：女生、双手横握哑铃 -->
   <g transform="translate(500 600) scale(0.92)">
   <g class="pig">
-    <ellipse cx="0" cy="8" rx="78" ry="13" fill="#4a7a3a" opacity=".18"/>
+    <ellipse cx="0" cy="8" rx="68" ry="12" fill="#4a7a3a" opacity=".18"/>
 
     <!-- 腿 -->
-    <rect x="-40" y="-62" width="32" height="62" rx="16" fill="#ffd4dd"/>
-    <rect x="8" y="-62" width="32" height="62" rx="16" fill="#ffd4dd"/>
-    <!-- 鞋 -->
-    <ellipse cx="-24" cy="-2" rx="26" ry="12" fill="#ff8fa8"/>
-    <ellipse cx="24" cy="-2" rx="26" ry="12" fill="#ff8fa8"/>
+    <path d="M-17 -56 L-17 -6" stroke="#ffd4dd" stroke-width="26" stroke-linecap="round"/>
+    <path d="M17 -56 L17 -6" stroke="#ffd4dd" stroke-width="26" stroke-linecap="round"/>
+    <!-- 小鞋 -->
+    <ellipse cx="-18" cy="-2" rx="22" ry="10" fill="#ff7fa5"/>
+    <ellipse cx="18" cy="-2" rx="22" ry="10" fill="#ff7fa5"/>
 
     <!-- 身体 -->
-    <ellipse cx="0" cy="-108" rx="60" ry="54" fill="#ffd4dd"/>
-    <!-- 背心 -->
-    <path d="M-46 -126 q46 -20 92 0 l7 36 q-53 17 -106 0 z" fill="#ff9eb5"/>
+    <ellipse cx="0" cy="-102" rx="46" ry="45" fill="#ffd4dd"/>
+    <!-- 小裙子 -->
+    <path d="M-45 -110 q45 -16 90 0 l11 54 q-56 14 -112 0 z" fill="#ff8fb0"/>
+    <rect x="-47" y="-113" width="94" height="9" rx="4.5" fill="#ffffff" opacity=".75"/>
 
-    <!-- 手臂（向上举起） -->
-    <rect x="-92" y="-198" width="27" height="92" rx="13.5" fill="#ffd4dd"
-          transform="rotate(-14 -78.5 -152)"/>
-    <rect x="65" y="-198" width="27" height="92" rx="13.5" fill="#ffd4dd"
-          transform="rotate(14 78.5 -152)"/>
+    <!-- 手臂：向两侧斜上举 -->
+    <path d="M-40 -132 Q -62 -188 -80 -238" stroke="#ffd4dd" stroke-width="21"
+          stroke-linecap="round" fill="none"/>
+    <path d="M40 -132 Q 62 -188 80 -238" stroke="#ffd4dd" stroke-width="21"
+          stroke-linecap="round" fill="none"/>
 
-    <!-- 哑铃 -->
-    <g fill="#7a8fa3">
-      <rect x="-96" y="-238" width="11" height="40" rx="5.5"/>
-      <circle cx="-90.5" cy="-244" r="16"/>
-      <circle cx="-90.5" cy="-192" r="16"/>
-      <rect x="85" y="-238" width="11" height="40" rx="5.5"/>
-      <circle cx="90.5" cy="-244" r="16"/>
-      <circle cx="90.5" cy="-192" r="16"/>
+    <!-- 左哑铃：横杆，手握中间 -->
+    <g transform="translate(-80 -250)">
+      <rect x="-30" y="-5.5" width="60" height="11" rx="5.5" fill="#93a7bb"/>
+      <rect x="-37" y="-17" width="13" height="34" rx="6.5" fill="#6b7f8f"/>
+      <rect x="24" y="-17" width="13" height="34" rx="6.5" fill="#6b7f8f"/>
+      <circle cx="0" cy="0" r="15" fill="#ffd4dd"/>
+      <circle cx="0" cy="0" r="8.5" fill="#ffbccb"/>
     </g>
-    <g fill="#9fb3c6">
-      <circle cx="-90.5" cy="-244" r="6"/>
-      <circle cx="90.5" cy="-244" r="6"/>
+    <!-- 右哑铃 -->
+    <g transform="translate(80 -250)">
+      <rect x="-30" y="-5.5" width="60" height="11" rx="5.5" fill="#93a7bb"/>
+      <rect x="-37" y="-17" width="13" height="34" rx="6.5" fill="#6b7f8f"/>
+      <rect x="24" y="-17" width="13" height="34" rx="6.5" fill="#6b7f8f"/>
+      <circle cx="0" cy="0" r="15" fill="#ffd4dd"/>
+      <circle cx="0" cy="0" r="8.5" fill="#ffbccb"/>
     </g>
 
     <!-- 头 -->
-    <g transform="translate(0 -222)">
+    <g transform="translate(0 -198)">
+      <!-- 蝴蝶结 -->
+      <g transform="translate(0 -60)">
+        <path d="M-7 0 l-27 -13 v26 z" fill="#ff6f9c"/>
+        <path d="M7 0 l27 -13 v26 z" fill="#ff6f9c"/>
+        <circle cx="0" cy="0" r="8.5" fill="#ff4f86"/>
+      </g>
+
       <!-- 耳朵 -->
-      <path d="M-42 -32 q-8 -30 16 -25 q15 4 15 25 z" fill="#ffb8c9"/>
-      <path d="M42 -32 q8 -30 -16 -25 q-15 4 -15 25 z" fill="#ffb8c9"/>
+      <ellipse cx="-37" cy="-30" rx="18" ry="16" fill="#ffb8c9" transform="rotate(-20 -37 -30)"/>
+      <ellipse cx="37" cy="-30" rx="18" ry="16" fill="#ffb8c9" transform="rotate(20 37 -30)"/>
+
       <!-- 脸 -->
-      <circle cx="0" cy="0" r="52" fill="#ffd4dd"/>
+      <circle cx="0" cy="0" r="51" fill="#ffd4dd"/>
+
       <!-- 腮红 -->
-      <ellipse cx="-31" cy="15" rx="11" ry="7" fill="#ff9eb5" opacity=".6"/>
-      <ellipse cx="31" cy="15" rx="11" ry="7" fill="#ff9eb5" opacity=".6"/>
-      <!-- 眼睛（专注） -->
-      <ellipse cx="-18" cy="-2" rx="6" ry="7" fill="#4a3426"/>
-      <ellipse cx="18" cy="-2" rx="6" ry="7" fill="#4a3426"/>
-      <circle cx="-16" cy="-5" r="2.1" fill="#fff"/>
-      <circle cx="20" cy="-5" r="2.1" fill="#fff"/>
-      <!-- 鼻子 -->
-      <ellipse cx="0" cy="21" rx="19" ry="14" fill="#ffb0c0"/>
-      <ellipse cx="-6.5" cy="21" rx="3" ry="4" fill="#d9657f"/>
-      <ellipse cx="6.5" cy="21" rx="3" ry="4" fill="#d9657f"/>
-      <!-- 用力的小嘴 -->
-      <path d="M-9 38 q9 9 18 0" stroke="#d9657f" stroke-width="3.4"
+      <ellipse cx="-33" cy="18" rx="13" ry="8" fill="#ff9eb5" opacity=".5"/>
+      <ellipse cx="33" cy="18" rx="13" ry="8" fill="#ff9eb5" opacity=".5"/>
+
+      <!-- 眼睛（大眼 + 高光 + 睫毛） -->
+      <g>
+        <ellipse cx="-19" cy="-4" rx="8.5" ry="10.5" fill="#3e2a33"/>
+        <circle cx="-15.6" cy="-8" r="3.1" fill="#fff"/>
+        <circle cx="-21.4" cy="-0.6" r="1.7" fill="#fff" opacity=".75"/>
+        <path d="M-29 -13 q-5.5 -4.5 -9 -1.5" stroke="#3e2a33" stroke-width="2.6"
+              fill="none" stroke-linecap="round"/>
+      </g>
+      <g>
+        <ellipse cx="19" cy="-4" rx="8.5" ry="10.5" fill="#3e2a33"/>
+        <circle cx="22.4" cy="-8" r="3.1" fill="#fff"/>
+        <circle cx="16.6" cy="-0.6" r="1.7" fill="#fff" opacity=".75"/>
+        <path d="M29 -13 q5.5 -4.5 9 -1.5" stroke="#3e2a33" stroke-width="2.6"
+              fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- 鼻子（比之前小一点） -->
+      <ellipse cx="0" cy="19" rx="15" ry="11" fill="#ffb0c0"/>
+      <ellipse cx="-5" cy="19" rx="2.5" ry="3.5" fill="#d9657f"/>
+      <ellipse cx="5" cy="19" rx="2.5" ry="3.5" fill="#d9657f"/>
+
+      <!-- 小嘴 -->
+      <path d="M-7.5 34 q7.5 7.5 15 0" stroke="#d9657f" stroke-width="2.9"
             fill="none" stroke-linecap="round"/>
+
       <!-- 汗珠 -->
-      <path d="M58 -12 q-8 12 0 17 q8 -5 0 -17z" fill="#7fc4f5"/>
-      <path d="M-60 -4 q-7 10 0 15 q7 -4 0 -15z" fill="#7fc4f5" opacity=".85"/>
+      <path d="M57 -16 q-7.5 11 0 15 q7.5 -4 0 -15z" fill="#7fc4f5"/>
+      <path d="M-59 -6 q-6.5 9 0 13 q6.5 -4 0 -13z" fill="#7fc4f5" opacity=".85"/>
     </g>
   </g>
   </g>
